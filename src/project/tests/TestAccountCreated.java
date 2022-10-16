@@ -34,10 +34,10 @@ public class TestAccountCreated {
     public Object[][] createData() {
 
         return new Object[][]{
-                {"Micko", "Petrovic", "sugibugi@gmail.com", "123_pPv", "123_pPv"},
-                {"Milica", "Miskovic", "velikiGmaz@gma.com", "123_pPv", "123_pPv"}, //email inccorect
-                {"Radomir", "Tot", "miskopepa@yahoo.com", "123_pPv", "123_pPv"},
-                {"Jelena", "Milutinovic", "pepaprase@gmail.com", "123_pPv", "123_pPv"},
+                {"Micko", "Petrovic", "sugibugi@gmail.com", "", ""},
+                {"Milica", "Miskovic", "velikiGmaz@.com", "123_pPv", "123_pPv"}, //email inccorect
+                {"Radomir", "Tot", "miskopepa@yahoo.com", "123_pPv", ""},
+                {"Jelena", "Milutinovic", "pepaprase@gmail.com", "", "123_pPv"},
         };
 
     }
@@ -45,7 +45,8 @@ public class TestAccountCreated {
         logIn.accountCreated();
         Assert.assertEquals("Thank you for registering with Fake Online Clothing Store.","Thank you for registering with Fake Online Clothing Store.");
     }
-    @Test void accountCreatedUNsuccssesfullyWrongMail(String incorrectFirstName,String incorrectLastName, String incorrectEmail, String incorrectPassword, String incorrectConfPass){
+    @Test (dataProvider = "incorrectDataForNewAccount")
+    void accountCreatedUNsuccssesfullyWrongMail(String name,String lastName, String email, String password, String confpass){
         logIn.acountCreatedIncorrectData();
 
 

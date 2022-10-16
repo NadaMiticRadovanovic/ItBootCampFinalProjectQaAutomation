@@ -15,11 +15,12 @@ public class OrderTop {
     WebDriver driver;
    // private final String MODAL_HEADING_XPATH = "//div[contains(text(),'You need to choose options for your item.')]";
   //  private final String MODAL_HEADING_TEXT = "You need to choose options for your item.";
-    private final String ADD_TO_CART ="/html[1]/body[1]/div[2]/main[1]/div[3]/div[1]/div[3]/ol[1]/li[5]/div[1]/div[1]/div[3]/div[1]/div[1]/form[1]/button[1]";
+    private final String ADD_TO_CART ="//body/div[2]/main[1]/div[3]/div[1]/div[3]/ol[1]/li[6]/div[1]/div[1]/div[3]/div[1]/div[1]/form[1]/button[1]";
     @FindBy(id = "option-label-size-143-item-166")
+
     private WebElement size;
-    @FindBy (xpath = "//button[@id='product-addtocart-button']")
-    private WebElement addCart;
+
+    private final String ADD_CART = "//button[@id='product-addtocart-button']";
     public OrderTop(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
@@ -47,11 +48,11 @@ public class OrderTop {
         Actions actions = new Actions(driver);
         actions.moveToElement(getTop(name)).perform();
     }
-    public void clickToAddCartButtonOnItem() {
+    public void addCartOnItem() {
         Actions actions = new Actions(driver);
 
         WebElement addToCard = driver.findElement(By.xpath(ADD_TO_CART));
-        actions.moveToElement(addCart).click().perform();
+        actions.moveToElement(addToCard).click().perform();
     }
     public void clikOnSize(){
         Actions actions = new Actions(driver);
@@ -59,7 +60,8 @@ public class OrderTop {
     }
     public void clickToAddCartButton(){
         Actions actions = new Actions(driver);
-        actions.moveToElement(addCart).click().perform();
+        WebElement addCard = driver.findElement(By.xpath(ADD_CART));
+        actions.doubleClick(addCard).perform();
     }
     public void OrderTop(WebDriver driver){
         this.driver = driver;

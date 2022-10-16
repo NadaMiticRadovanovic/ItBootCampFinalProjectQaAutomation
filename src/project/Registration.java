@@ -7,7 +7,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Registration {
     private WebDriver driver;
-
+    @FindBy(xpath = "//header/div[1]/div[1]/ul[1]/li[2]/div[1]/ul[1]/li[3]/a[1]")
+    private  WebElement signOutButton;
+    @FindBy(xpath = "//header/div[1]/div[1]/ul[1]/li[2]/span[1]/button[1]")
+    private WebElement arrowButtonDropdown;
     @FindBy(xpath = "//header/div[1]/div[1]/ul[1]/li[3]/a[1]")
     private WebElement signInLink;
     @FindBy(id = "firstname")
@@ -43,6 +46,12 @@ public class Registration {
     }
     public void enterCreateAccountButton (){
         this.createAccountButton.click();
+    }
+    public void signOut(){
+        this.arrowButtonDropdown.click();
+        this.signOutButton.click();
+
+
     }
     public Registration(WebDriver driver){
         this.driver = driver;

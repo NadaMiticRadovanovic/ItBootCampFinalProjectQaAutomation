@@ -77,4 +77,11 @@ public class TestLogIn {
        logIn.clickSignUpButton();
        Assert.assertEquals("The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.","The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.", "Credentials are incorrect");
     }
+    @Test
+    void succesfullSignOut(){
+        logIn.existingAccount("miticnada87@yahoo.com", "Neronero123");
+        Assert.assertEquals("Welcome, Nada Mitic!","Welcome, Nada Mitic!");
+
+        registration.signOut();
+    }
 }
